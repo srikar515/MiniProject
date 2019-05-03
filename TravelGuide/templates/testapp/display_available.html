@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <h2 align="center">Available Guides on Selected Day!</h2><br/><br/>
+    {% for post in query_set_list %}
+     <div class="container">
+      <div class="jumbotron" align="center">
+       <h3>User Name:{{ post.user_name }}</h3>
+       <h3>email_id: {{ post.email_id }}</h3>
+       <h3>gender:{{ post.gender }}</h3>
+       <h3>Phone Number:{{ post.phone_number }}</h3>
+       <h3>Native_place:{{ post.native_place }}</h3>
+       <h3>Age:{{ post.age }}</h3>
+       <h3>Address:{{ post.Address }}</h3>
+
+          <a class="btn btn-info" href="{% url 'testapp:display_book_view' %}?id={{post.id}}&id1={{request.user}}&date_value={{date_value}}">BOOK</a>
+
+          {% empty %}
+         <h3 align="center">Sorry No Guides are avaliable on that day.Kindly choose any other day!</h3>
+
+      </div>
+     </div>
+    {% endfor %}
+</body>
+</html>

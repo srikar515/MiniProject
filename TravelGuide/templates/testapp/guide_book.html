@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+ <head>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+     <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+   </head>
+ <body style="background-color:cornsilk;">
+     <div class="container">
+         <div class="jumbotron">
+           <h2>Enter the details to book the Guide</h2>
+
+            <form method="post" action="{% url 'testapp:guide_booking_view' %}">
+                    {% csrf_token %}
+                 <h3><label for="place">Place Selection:</label> &emsp;
+                 <select name="place">
+                       <option value="Hyderabad">Hyderabad</option>
+                       <option value="Warangal">Warangal</option>
+                       <option value="Adilabad">Adilabad</option>
+                       <option value="Vizag">Vizag</option>
+                       <option value="Vijayawada">Vijayawada</option>
+                 </select></h3><br/>
+                 <h3><label for="language">language Selection:</label>
+                 <select name="language">
+                       <option value="Telugu">Telugu</option>
+                       <option value="Hindi">Hindi</option>
+                       <option value="English">English</option>
+                       <option value="Spanish">Spanish</option>
+                 </select></h3><br/>
+
+
+
+                     <h3> <label for="gender_select">Gender Selection:</label> &emsp;
+                      <input type="radio" name="gender" value="Male" checked> Male &emsp;
+                         <input type="radio" name="gender" value="Female"> Female &emsp;
+                      <input type="radio" name="gender" value="Other"> Others<br></h3>
+                 <br/>
+
+                  <div class="form-group"> <!-- Date input -->
+                       <label class="control-label" for="date">Date</label>
+                       <input class="form-control" id="date" name="date" placeholder="yyyy-mm-dd" type="text" required/>
+                    </div>
+
+                     <input type="submit" class='btn btn-primary' value="submit">
+
+            </form>
+
+         </div>
+     </div>
+   <script>
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'yyyy-mm-dd',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
+
+    </body>
+</html>
+
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+     <body>
+      <div class="container">
+       <div class="jumbotron">
+
+       <div class="form-group">
+           <label for="sel1">Select languages you Know:</label>
+          <form method="POST" action="{% url 'testapp:tourist_language_view' %}">
+          <select multiple="multiple"  name="languages_select" id="services" size="4" class="form-control">
+
+              <option value="Telugu">Telugu</option>
+              <option value="Hindi">Hindi</option>
+              <option value="English">Engilsh</option>
+              <option value="Spanish">Spanish</option>
+
+          </select>
+                 {% csrf_token %}
+                 <input type="submit" class='btn btn-primary' value="submit">
+          </form>
+       </div>
+       </div>
+      </div>
+     </body>
+</html>
